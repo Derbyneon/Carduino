@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contrôle manuel - Carduino</title>
+  <link rel="stylesheet" href="assets/css/control.css" />
+</head>
+<body>
+  <h2>Contrôle Manuel</h2>
+  <button id="connect-btn">Connexion Bluetooth</button>
+  <img src="http://192.168.100.153:5000/stream" alt="Flux vidéo" style="width:100%; border-radius: 12px;">
+
+  <div id="controls">
+    <button id="start">Démarrer</button>
+    <button id="stop">Arrêter</button>
+    <button id="accelerate">Accélérer</button>
+    <button id="reverse">Reculer</button>
+  </div>
+  <script type="module" src="assets/js/bluetooth.js"></script>
+  <script type="module" src="assets/js/control.js"></script>
+</body>
+</html>

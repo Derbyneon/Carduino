@@ -1,0 +1,21 @@
+/* assets/css/dashboard.css */
+
+.dashboard {
+    margin-top: 2rem;
+  }
+  
+  #user-info {
+    background: #fff;
+    padding: 1.2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  }
+  
+  .vehicle-card {
+    background-color: #e8f0fe;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+  }
+  

@@ -1,0 +1,21 @@
+/* assets/css/control.css */
+
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  
+  .control-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .control-buttons button {
+    min-width: 120px;
+  }
+  

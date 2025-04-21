@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inscription - Carduino</title>
+  <link rel="stylesheet" href="assets/css/auth.css" />
+</head>
+<body>
+  <h2>Inscription</h2>
+  <form id="signup-form">
+    <input type="text" id="name" placeholder="Nom complet" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Mot de passe" required />
+    <button type="submit">S'inscrire</button>
+  </form>
+  <script type="module" src="assets/js/firebase-init.js"></script>
+  <script type="module" src="assets/js/auth.js"></script>
+</body>
+</html>
