@@ -4,11 +4,49 @@
   <meta charset="UTF-8" />
   <title>Contrôle manuel - Carduino</title>
   <link rel="stylesheet" href="assets/css/control.css" />
+  <style>
+    #joystick-zone {
+      width: 200px;
+      height: 200px;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    #voice-instruction {
+      text-align: center;
+      margin-top: 10px;
+      font-style: italic;
+      color: gray;
+    }
+
+    #controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-  <h2>Contrôle Manuel</h2>
-  <button id="connect-btn">Connexion Bluetooth</button>
-  <img src="http://192.168.100.153:5000/stream" alt="Flux vidéo" style="width:100%; border-radius: 12px;">
+  <h2 style="text-align:center;">Contrôle Manuel</h2>
+
+  <img src="http://192.168.11.103:5000/stream" alt="Flux vidéo" style="width:100%; border-radius: 12px;">
+
+  <div id="joystick-zone"></div>
+  <p id="voice-instruction">Maintiens la barre d’espace pour parler</p>
 
   <div id="controls">
     <button id="start">Démarrer</button>
@@ -16,7 +54,8 @@
     <button id="accelerate">Accélérer</button>
     <button id="reverse">Reculer</button>
   </div>
-  <script type="module" src="assets/js/bluetooth.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/nipplejs@0.9.0/dist/nipplejs.min.js"></script>
   <script type="module" src="assets/js/control.js"></script>
 </body>
 </html>

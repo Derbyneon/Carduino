@@ -6,12 +6,31 @@
   <link rel="stylesheet" href="assets/css/dashboard.css" />
 </head>
 <body>
-  <h1>Mon tableau de bord</h1>
-  <div id="user-info"></div>
+  <header>
+    <h1>Tableau de bord - Carduino</h1>
+    <nav>
+      <a href="profile.html">Profil</a> | 
+      <a href="control.html">Contrôle Manuel</a>
+    </nav>
+  </header>
 
-  <button id="add-vehicle-btn">Ajouter un véhicule</button>
+  <section id="status-section">
+    <h2>Statistiques du véhicule</h2>
+    <div id="vehicle-stats">
+      <p><strong>Batterie :</strong> <span id="battery">Chargement...</span></p>
+      <p><strong>Vitesse :</strong> <span id="speed">Chargement...</span></p>
+      <p><strong>Moteur :</strong> <span id="engine">Chargement...</span></p>
+    </div>
+  </section>
 
-  <div id="vehicles-list"></div>
+  <section id="video-section">
+    <h2>Vue en direct</h2>
+<!--  <img src="http://192.168.100.153:5000/stream" alt="Flux vidéo" style="width:100%; border-radius: 12px; margin-bottom: 20px;"> -->
+</section>
+
+  <footer>
+    <p>Connecté à Carduino sur Raspberry Pi 5</p>
+  </footer>
 
   <script type="module" src="assets/js/firebase-init.js"></script>
   <script type="module" src="assets/js/dashboard.js"></script>

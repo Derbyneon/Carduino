@@ -7,7 +7,19 @@
 </head>
 <body>
   <h1>Profil utilisateur</h1>
-  <div id="profile-data"></div>
+  <div id="profile-container">
+    <div id="avatar-container">
+      <img id="avatar" src="" alt="Avatar utilisateur" style="width:120px; height:120px; border-radius:50%; object-fit:cover;">
+    </div>
+    <div id="profile-data">
+      <p><strong>Nom :</strong> <span id="name"></span></p>
+      <p><strong>Email :</strong> <span id="email"></span></p>
+      <p><strong>Compte créé le :</strong> <span id="created-at"></span></p>
+    </div>
+  </div>
+
+  <div id="vehicles-list"></div>
+
   <script type="module" src="assets/js/firebase-init.js"></script>
   <script type="module" src="assets/js/profile.js"></script>
 </body>
