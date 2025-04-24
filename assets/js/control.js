@@ -45,12 +45,13 @@ let keyboardDirection = null;
 let keyInterval = null;
 
 document.addEventListener("keydown", (e) => {
-  if (e.repeat) return;
+  if (e.repeat || e.code === "Space") return;  // Ne traite pas la barre d’espace ici
   activeKeys.add(e.key);
   updateKeyboardDirection();
 });
 
 document.addEventListener("keyup", (e) => {
+  if (e.code === "Space") return;  // Ne modifie pas les directions si c'est juste la barre d’espace
   activeKeys.delete(e.key);
   updateKeyboardDirection();
 });
@@ -78,7 +79,7 @@ function updateKeyboardDirection() {
       const command = directionsMap[dir];
       console.log("Clavier ->", command);
       sendCommand(command);
-      simulateJoystickMovement(dir);  // <<< animation directionnelle persistante
+      simulateJoystickMovement(dir);
 
       keyInterval = setInterval(() => {
         sendCommand(command);
@@ -92,7 +93,7 @@ function updateKeyboardDirection() {
   if (!dir && keyInterval) {
     clearInterval(keyInterval);
     keyboardDirection = null;
-    resetJoystickVisual(); // <<< retour visuel au centre
+    resetJoystickVisual();
   }
 }
 
@@ -127,6 +128,9 @@ document.getElementById("stop").addEventListener("click", () => sendCommand("STO
 document.getElementById("accelerate").addEventListener("click", () => sendCommand("ACCELERATE"));
 document.getElementById("reverse").addEventListener("click", () => sendCommand("REVERSE"));
 
+
+
+
 // ------- COMMANDE VOCALE -------
 let recognition;
 let listening = false;
@@ -137,27 +141,50 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
   recognition.lang = 'fr-FR';
 
   recognition.onresult = (event) => {
-    const speech = event.results[0][0].transcript.toLowerCase();
-    console.log("Commande vocale reçue :", speech);
+    const speech = event.results[0][0].transcript.toLowerCase().trim();
+    console.log("🗣️ Commande vocale détectée :", `"${speech}"`);
 
-    if (speech.includes("avance") || speech.includes("devant")) sendCommand("FORWARD");
-    else if (speech.includes("recule") || speech.includes("arrière")) sendCommand("REVERSE");
-    else if (speech.includes("gauche")) sendCommand("LEFT");
-    else if (speech.includes("droite")) sendCommand("RIGHT");
-    else if (speech.includes("démarre")) sendCommand("START");
-    else if (speech.includes("arrête")) sendCommand("STOP");
-    else console.log("Commande vocale non reconnue");
+    let command = null;
+
+    if (speech.includes("avance") || speech.includes("en avant") || speech.includes("devant")) {
+      command = "FORWARD";
+    } else if (speech.includes("recule") || speech.includes("arrière") || speech.includes("en arrière")) {
+      command = "REVERSE";
+    } else if (speech.includes("gauche")) {
+      command = "LEFT";
+    } else if (speech.includes("droite")) {
+      command = "RIGHT";
+    } else if (speech.includes("démarre") || speech.includes("démarrage")) {
+      command = "START";
+    } else if (speech.includes("arrête") || speech.includes("stop")) {
+      command = "STOP";
+    }
+
+    if (command) {
+      console.log("📤 Envoi de la commande :", command);
+      sendCommand(command)
+        .then(response => {
+          console.log("✅ Réponse du serveur :", response);
+        })
+        .catch(error => {
+          console.error("❌ Erreur lors de l'envoi :", error);
+        });
+    } else {
+      console.warn("⚠️ Commande vocale non reconnue :", speech);
+    }
   };
 
   recognition.onerror = (err) => {
-    console.warn("Erreur vocale :", err);
+    console.warn("🎤 Erreur de reconnaissance vocale :", err);
   };
 }
 
+// Gestion de la commande vocale avec barre espace (maintien)
 document.addEventListener("keydown", (e) => {
   if (e.code === "Space" && !listening) {
     listening = true;
     recognition?.start();
+    console.log("🎙️ Commande vocale activée...");
   }
 });
 
@@ -165,5 +192,6 @@ document.addEventListener("keyup", (e) => {
   if (e.code === "Space" && listening) {
     listening = false;
     recognition?.stop();
+    console.log("🛑 Commande vocale arrêtée.");
   }
 });
