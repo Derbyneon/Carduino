@@ -2,16 +2,39 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Connexion - Carduino</title>
   <link rel="stylesheet" href="assets/css/auth.css" />
 </head>
 <body>
-  <h2>Connexion</h2>
-  <form id="login-form">
-    <input type="email" id="email" placeholder="Email" required />
-    <input type="password" id="password" placeholder="Mot de passe" required />
-    <button type="submit">Se connecter</button>
-  </form>
+  <div class="auth-container">
+    <div class="auth-logo">
+      <img src="https://content.arduino.cc/brand/arduino-color.svg" alt="Arduino Logo" />
+      <p class="tagline">Voiture autonome controlable via Bluetooth</p>
+    </div>
+    <div class="auth-form">
+      <h2>Bienvenue</h2>
+      <p class="auth-subtitle">Connectez-vous pour accéder à votre espace personnel</p>
+      
+      <form id="login-form" class="form">
+        <div class="form-group">
+          <input type="email" id="email" class="input-field" placeholder="Adresse email" required />
+        </div>
+        
+        <div class="form-group">
+          <input type="password" id="password" class="input-field" placeholder="Mot de passe" required />
+        </div>
+        
+        <a href="#" class="forgot-password">Mot de passe oublié?</a>
+        
+        <button type="submit" class="submit-btn">Se connecter</button>
+      </form>
+      
+      <div class="auth-footer">
+        <p>Pas encore de compte ? <a href="#" class="signup-link">Inscrivez-vous ici</a></p>
+      </div>
+    </div>
+  </div>
   <script type="module" src="assets/js/firebase-init.js"></script>
   <script type="module" src="assets/js/auth.js"></script>
 </body>

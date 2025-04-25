@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
+:root {
+  --primary: #00a8a8;
+  --primary-dark: #00797a;
+  --white: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --border-glow: rgba(255, 255, 255, 0.2);
+  --text: #1e272e;
+  --gray-light: #ecf0f1;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --blur: blur(15px);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #d6faff, #96e5e5);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  color: var(--text);
+  position: relative;
+  overflow: hidden;
+}
+
+/* === BACKGROUND IMAGE (voiture Arduino couvrant tout le fond) === */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://i.ytimg.com/vi/hI0UBvpuRTw/maxresdefault.jpg') center/contain no-repeat;
+  opacity: 0.35; /* Ajuste l’opacité si nécessaire */
+  z-index: -1;
+  pointer-events: none;
+  background-size: cover; /* Fait en sorte que l’image couvre toute la page */
+  background-position: center;
+}
+
+/* === HERO & CARD === */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.glass-card {
+  position: relative;
+  z-index: 1;
+  backdrop-filter: var(--blur);
+  background: var(--glass-bg);
+  border: 1px solid var(--border-glow);
+  border-radius: 20px;
+  padding: 50px 40px;
+  box-shadow: 0 8px 32px var(--shadow);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+/* === TEXT === */
+h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+h1 span {
+  color: var(--primary);
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #2f3640;
+}
+
+/* === BUTTONS === */
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 28px;
+  border-radius: 40px;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: var(--white);
+}
+.btn.primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--primary-dark);
+  border: 2px solid var(--primary-dark);
+}
+.btn.secondary:hover {
+  background: var(--primary-dark);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+  .glass-card {
+    padding: 30px 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

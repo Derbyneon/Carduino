@@ -8,29 +8,33 @@
 <body>
   <header>
     <h1>Tableau de bord - Carduino</h1>
-    <nav>
-      <a href="profile.html">Profil</a> | 
+    <nav class="dashboard-nav"> 
       <a href="control.html">Contrôle Manuel</a>
+      <a href="profile.html">Profil</a> 
+      <a href="index.html">Accueil</a> 
     </nav>
   </header>
 
-  <section id="status-section">
-    <h2>Statistiques du véhicule</h2>
-    <div id="vehicle-stats">
-      <p><strong>Batterie :</strong> <span id="battery">Chargement...</span></p>
-      <p><strong>Vitesse :</strong> <span id="speed">Chargement...</span></p>
-      <p><strong>Moteur :</strong> <span id="engine">Chargement...</span></p>
+  <section class="dashboard-panels">
+    <div id="status-section">
+      <h2>Statistiques du véhicule</h2>
+      <div id="vehicle-stats">
+        <p><strong>Batterie :</strong> <span id="battery">Chargement...</span></p>
+        <p><strong>Vitesse :</strong> <span id="speed">Chargement...</span></p>
+        <p><strong>Moteur :</strong> <span id="engine">Chargement...</span></p>
+      </div>
+    </div>
+  
+    <div id="video-section">
+      <h2>Vue en direct</h2>
+      <img src="https://osoyoo.com/picture/V2.1_Arduino_Robot_Car/other/1.jpg?text=Flux+Vid%C3%A9o+Arduino" alt="Flux vidéo mock" />
     </div>
   </section>
+  
 
-  <section id="video-section">
-    <h2>Vue en direct</h2>
-<img src="http://192.168.100.126:5000/stream_with_obstacle_detection" alt="Flux vidéo" style="width:100%; border-radius: 12px; margin-bottom: 20px;">
-</section>
-
-  <footer>
+  <!-- <footer>
     <p>Connecté à Carduino sur Raspberry Pi 5</p>
-  </footer>
+  </footer> -->
 
   <script type="module" src="assets/js/firebase-init.js"></script>
   <script type="module" src="assets/js/dashboard.js"></script>

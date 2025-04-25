@@ -1,24 +1,223 @@
-/* assets/css/auth.css */
+/* Authentification - Style amélioré sans alternatives de connexion */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
+:root {
+  --primary: #00979d;
+  --primary-dark: #007b7f;
+  --primary-light: #e0f7fa;
+  --white: #ffffff;
+  --gray-light: #f8f9fa;
+  --gray: #e9ecef;
+  --gray-dark: #495057;
+  --text: #2d3436;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif; /* Remplacer Roboto par Inter */
+  background: linear-gradient(135deg, var(--gray-light) 0%, var(--gray) 100%);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--text);
+}
+
+.auth-container {
+  display: flex;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px var(--shadow);
+  overflow: hidden;
+  width: 90%;
+  max-width: 1000px;
+  min-height: 500px;
+}
+
+.auth-logo {
+  flex: 1;
+  background: linear-gradient(145deg, var(--primary) 0%, var(--primary-dark) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-logo::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.auth-logo::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+.auth-logo img {
+  max-width: 80%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  filter: brightness(0) invert(1);
+}
+
+.auth-logo .tagline {
+  color: var(--white);
+  font-weight: 300;
+  margin-top: 20px;
+  text-align: center;
+  opacity: 0.9;
+  font-size: 16px;
+  position: relative;
+  z-index: 2;
+}
 
 .auth-form {
-    max-width: 400px;
-    margin: 5rem auto;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex: 1.5;
+  padding: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.auth-subtitle {
+  color: var(--gray-dark);
+  margin-bottom: 30px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid var(--gray);
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: var(--gray-light);
+  transition: all 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: var(--white);
+  box-shadow: 0 0 0 3px rgba(0, 151, 157, 0.1);
+}
+
+.input-field::placeholder {
+  color: #adb5bd;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 6px rgba(0, 151, 157, 0.2);
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 151, 157, 0.3);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 151, 157, 0.2);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 15px;
+  color: var(--gray-dark);
+}
+
+.signup-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.signup-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.forgot-password {
+  display: block;
+  text-align: right;
+  color: var(--primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 25px;
+}
+
+.forgot-password:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+    max-width: 500px;
   }
   
-  .auth-form h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
+  .auth-logo {
+    padding: 30px 20px;
+    min-height: 200px;
   }
   
-  .auth-form input {
-    margin-bottom: 1rem;
+  .auth-form {
+    padding: 30px 25px;
   }
-  
-  .auth-form button {
-    width: 100%;
-  }
-  
+}
