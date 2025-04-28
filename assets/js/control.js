@@ -130,68 +130,99 @@ document.getElementById("reverse").addEventListener("click", () => sendCommand("
 
 
 
-
 // ------- COMMANDE VOCALE -------
 let recognition;
 let listening = false;
 
-if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  recognition = new SpeechRecognition();
-  recognition.lang = 'fr-FR';
+function initSpeechRecognition() {
+  if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.lang = 'fr-FR';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    
+    recognition.onstart = () => {
+      console.log("🎙️ Commande vocale activée...");
+      listening = true;
+    };
+    
+    recognition.onend = () => {
+      console.log("🛑 Commande vocale arrêtée.");
+      listening = false;
+    };
 
-  recognition.onresult = (event) => {
-    const speech = event.results[0][0].transcript.toLowerCase().trim();
-    console.log("🗣️ Commande vocale détectée :", `"${speech}"`);
+    recognition.onresult = (event) => {
+      const speech = event.results[0][0].transcript.toLowerCase().trim();
+      console.log("🗣️ Commande vocale détectée :", `"${speech}"`);
 
-    let command = null;
+      let command = null;
 
-    if (speech.includes("avance") || speech.includes("en avant") || speech.includes("devant")) {
-      command = "FORWARD";
-    } else if (speech.includes("recule") || speech.includes("arrière") || speech.includes("en arrière")) {
-      command = "REVERSE";
-    } else if (speech.includes("gauche")) {
-      command = "LEFT";
-    } else if (speech.includes("droite")) {
-      command = "RIGHT";
-    } else if (speech.includes("démarre") || speech.includes("démarrage")) {
-      command = "START";
-    } else if (speech.includes("arrête") || speech.includes("stop")) {
-      command = "STOP";
-    }
+      if (speech.includes("avance") || speech.includes("en avant") || speech.includes("devant")) {
+        command = "FORWARD";
+      } else if (speech.includes("recule") || speech.includes("arrière") || speech.includes("en arrière")) {
+        command = "REVERSE";
+      } else if (speech.includes("gauche")) {
+        command = "LEFT";
+      } else if (speech.includes("droite")) {
+        command = "RIGHT";
+      } else if (speech.includes("démarre") || speech.includes("démarrage")) {
+        command = "START";
+      } else if (speech.includes("arrête") || speech.includes("stop")) {
+        command = "STOP";
+      }
 
-    if (command) {
-      console.log("📤 Envoi de la commande :", command);
-      sendCommand(command)
-        .then(response => {
-          console.log("✅ Réponse du serveur :", response);
-        })
-        .catch(error => {
-          console.error("❌ Erreur lors de l'envoi :", error);
-        });
-    } else {
-      console.warn("⚠️ Commande vocale non reconnue :", speech);
-    }
-  };
+      if (command) {
+        console.log("📤 Envoi de la commande :", command);
+        sendCommand(command)
+          .then(response => {
+            console.log("✅ Réponse du serveur :", response);
+          })
+          .catch(error => {
+            console.error("❌ Erreur lors de l'envoi :", error);
+          });
+      } else {
+        console.warn("⚠️ Commande vocale non reconnue :", speech);
+      }
+    };
 
-  recognition.onerror = (err) => {
-    console.warn("🎤 Erreur de reconnaissance vocale :", err);
-  };
+    recognition.onerror = (event) => {
+      console.error("🎤 Erreur de reconnaissance vocale :", event.error);
+      listening = false;
+    };
+    
+    return true;
+  } else {
+    console.error("La reconnaissance vocale n'est pas supportée par votre navigateur.");
+    return false;
+  }
 }
+
+// Initialiser la reconnaissance vocale au chargement
+document.addEventListener("DOMContentLoaded", () => {
+  if (initSpeechRecognition()) {
+    console.log("✅ Système de reconnaissance vocale initialisé");
+  }
+});
 
 // Gestion de la commande vocale avec barre espace (maintien)
 document.addEventListener("keydown", (e) => {
-  if (e.code === "Space" && !listening) {
-    listening = true;
-    recognition?.start();
-    console.log("🎙️ Commande vocale activée...");
+  if (e.code === "Space" && !listening && recognition) {
+    try {
+      recognition.start();
+    } catch (error) {
+      console.error("Erreur au démarrage de la reconnaissance vocale:", error);
+    }
   }
 });
 
 document.addEventListener("keyup", (e) => {
-  if (e.code === "Space" && listening) {
-    listening = false;
-    recognition?.stop();
-    console.log("🛑 Commande vocale arrêtée.");
+  if (e.code === "Space" && listening && recognition) {
+    try {
+      recognition.stop();
+    } catch (error) {
+      console.error("Erreur à l'arrêt de la reconnaissance vocale:", error);
+    }
   }
 });
+
