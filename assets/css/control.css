@@ -1,24 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
 body {
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
   text-align: center;
   padding: 20px;
 }
 
-#controls button, #voice-command {
+#control button, #voice-command {
   margin: 10px;
   padding: 10px 20px;
   font-size: 16px;
-  border-radius: 8px;
-  background-color: #2a9d8f;
+  border-radius: 25px;
+  background-color: #007E83;
   color: white;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease; 
 }
 
-#controls button:hover, #voice-command:hover {
-  background-color: #21867a;
+#control button:hover, #voice-command:hover {
+  background-color: #005F63;
+
 }
 
 #joystick-zone {
   margin-top: 20px;
+}
+
+.control-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.video-container {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  border: 2px solid #007E83;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #007E83;
+}
+
+.back-dashboard-link {
+  position: absolute;
+  left: 35px;
+  color: #007E83;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  border: 2px solid #007E83;
+  padding: 5px 10px;
+  border-radius: 25px;
+  background-color: transparent;
+}
+
+.back-dashboard-link:hover {
+  background-color: #007E83;
+  color: white;
+  transition: background-color 0.5s ease; 
 }

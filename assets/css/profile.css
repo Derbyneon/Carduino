@@ -1,11 +1,447 @@
-/* assets/css/profile.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
 
-.profile-container {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    max-width: 600px;
-    margin: 3rem auto;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+:root {
+  --primary: #00979d;
+  --primary-dark: #007b7f;
+  --primary-light: #e0f7fa;
+  --white: #ffffff;
+  --gray-light: #f8f9fa;
+  --gray: #e9ecef;
+  --gray-dark: #495057;
+  --text: #2d3436;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--gray-light), var(--gray));
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+/* Title */
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 20px 0 30px;
+  color: var(--primary-dark);
+}
+
+/* Back link */
+.back-dashboard-link {
+  align-self: flex-start;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #007E83;
+  text-decoration: none;
+  font-size: 14px;
+  border: 2px solid #007E83;
+  padding: 6px 12px;
+  border-radius: 25px;
+  background-color: transparent;
+  transition: all 0.2s ease;
+}
+.back-dashboard-link:hover {
+  background-color: #007E83;
+  color: white;
+}
+
+/* Profile container */
+#profile-container {
+  background: var(--white);
+  box-shadow: 0 8px 25px var(--shadow);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 30px 40px;
+  gap: 30px;
+  width: 100%;
+  max-width: 800px;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+/* Avatar */
+#avatar-container {
+  flex: 0 0 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary);
+  box-shadow: 0 4px 10px var(--shadow);
+}
+#avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-width: 100%;
+}
+
+/* Profile data */
+#profile-data {
+  flex: 1;
+}
+#profile-data p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+#profile-data strong {
+  color: var(--primary-dark);
+}
+
+/* Vehicles list */
+#vehicles-list {
+  background: var(--white);
+  box-shadow: 0 8px 25px var(--shadow);
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  max-width: 800px;
+  margin: 10px;
+}
+#vehicles-list::before {
+  content: 'Véhicules enregistrés';
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+#vehicles-list:empty::after {
+  content: "Aucun véhicule enregistré.";
+  color: var(--gray-dark);
+  font-style: italic;
+  display: block;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #profile-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
   }
+
+  #profile-data {
+    width: 100%;
+  }
+
+  .back-dashboard-link {
+    align-self: center;
+    font-size: 13px;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    position: static;
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
+:root {
+  --primary: #00979d;
+  --primary-dark: #007b7f;
+  --primary-light: #e0f7fa;
+  --white: #ffffff;
+  --gray-light: #f8f9fa;
+  --gray: #e9ecef;
+  --gray-dark: #495057;
+  --text: #2d3436;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--gray-light), var(--gray));
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
   
+  max-width: 800px; 
+  margin: 0 auto;
+}
+
+/* Title */
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 20px 0 30px;
+  color: var(--primary-dark);
+}
+
+/* Back link */
+.back-dashboard-link {
+  align-self: flex-start;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #007E83;
+  text-decoration: none;
+  font-size: 14px;
+  border: 2px solid #007E83;
+  padding: 6px 12px;
+  border-radius: 25px;
+  background-color: transparent;
+  transition: all 0.2s ease;
+}
+.back-dashboard-link:hover {
+  background-color: #007E83;
+  color: white;
+}
+
+/* Profile container */
+#profile-container {
+  background: var(--white);
+  box-shadow: 0 8px 25px var(--shadow);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 30px 40px;
+  gap: 30px;
+  width: 100%;
+  max-width: 800px;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+/* Avatar */
+#avatar-container {
+  flex: 0 0 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary);
+  box-shadow: 0 4px 10px var(--shadow);
+}
+#avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-width: 100%;
+}
+
+/* Profile data */
+#profile-data {
+  flex: 1;
+}
+#profile-data p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+#profile-data strong {
+  color: var(--primary-dark);
+}
+
+/* Vehicles list */
+#vehicles-list {
+  background: var(--white);
+  box-shadow: 0 8px 25px var(--shadow);
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  max-width: 800px;
+  margin: 10px;
+}
+#vehicles-list::before {
+  content: 'Véhicules enregistrés';
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+#vehicles-list:empty::after {
+  content: "Aucun véhicule enregistré.";
+  color: var(--gray-dark);
+  font-style: italic;
+  display: block;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #profile-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+  }
+
+  #profile-data {
+    width: 100%;
+  }
+
+  .back-dashboard-link {
+    align-self: center;
+    font-size: 13px;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    position: static;
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
+:root {
+  --primary: #00979d;
+  --primary-dark: #007b7f;
+  --primary-light: #e0f7fa;
+  --white: #ffffff;
+  --gray-light: #f8f9fa;
+  --gray: #e9ecef;
+  --gray-dark: #495057;
+  --text: #2d3436;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--gray-light), var(--gray));
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+/* Title */
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 20px 0 30px;
+  color: var(--primary-dark);
+}
+
+/* Back link */
+.back-dashboard-link {
+  align-self: flex-start;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #007E83;
+  text-decoration: none;
+  font-size: 14px;
+  border: 2px solid #007E83;
+  padding: 6px 12px;
+  border-radius: 25px;
+  background-color: transparent;
+  transition: all 0.2s ease;
+}
+.back-dashboard-link:hover {
+  background-color: #007E83;
+  color: white;
+}
+
+/* Profile container */
+#profile-container {
+  background: var(--white);
+  box-shadow: 0 8px 25px var(--shadow);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 30px 40px;
+  gap: 30px;
+  width: 100%;
+  max-width: 800px;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+/* Avatar */
+#avatar-container {
+  flex: 0 0 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary);
+  box-shadow: 0 4px 10px var(--shadow);
+}
+#avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-width: 100%;
+}
+
+/* Profile data */
+#profile-data {
+  flex: 1;
+}
+#profile-data p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+#profile-data strong {
+  color: var(--primary-dark);
+}
+
+/* Vehicles list */
+#vehicles-list {
+  background: var(--white);
+  box-shadow: 0 8px 25px var(--shadow);
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  max-width: 800px;
+  margin: 10px;
+}
+#vehicles-list::before {
+  content: 'Véhicules enregistrés';
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+#vehicles-list:empty::after {
+  content: "Aucun véhicule enregistré.";
+  color: var(--gray-dark);
+  font-style: italic;
+  display: block;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #profile-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+  }
+
+  #profile-data {
+    width: 100%;
+  }
+
+  .back-dashboard-link {
+    align-self: center;
+    font-size: 13px;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    position: static;
+  }
+}

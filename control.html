@@ -31,7 +31,7 @@
       border: none;
       background-color: #007bff;
       color: white;
-      border-radius: 8px;
+      border-radius: 25px;
       cursor: pointer;
     }
 
@@ -41,19 +41,27 @@
   </style>
 </head>
 <body>
-  <h2 style="text-align:center;">Contrôle Manuel</h2>
+  <h1>Contrôle Manuel</h1>
+  <a href="dashboard.html" class="back-dashboard-link"> <- Retour au tableau de bord</a>
+    <div class="control-container">
+      <div class="controls">
+        <div id="joystick-zone"></div>
+        <p id="voice-instruction">Maintenez la barre d’espace pour parler</p>
 
-  <img src="http://192.168.100.126:5000/stream" alt="Flux vidéo" style="width:100%; border-radius: 12px;">
+        <div id="control">
+          <button id="start">Démarrer</button>
+          <button id="stop">Arrêter</button>
+          <button id="accelerate">Accélérer</button>
+          <button id="reverse">Reculer</button>
+        </div>
+      </div>
 
-  <div id="joystick-zone"></div>
-  <p id="voice-instruction">Maintiens la barre d’espace pour parler</p>
-
-  <div id="controls">
-    <button id="start">Démarrer</button>
-    <button id="stop">Arrêter</button>
-    <button id="accelerate">Accélérer</button>
-    <button id="reverse">Reculer</button>
+      <div class="video-container">
+        <img src="http://192.168.11.103:5000/stream" alt="Flux vidéo">
+      </div>
+    </div>
   </div>
+  
 
   <script src="https://cdn.jsdelivr.net/npm/nipplejs@0.9.0/dist/nipplejs.min.js"></script>
   <script type="module" src="assets/js/control.js"></script>
