@@ -2,14 +2,14 @@ import { sendCommand } from './car-api.js';
 
 const joystickZone = document.getElementById("joystick-zone");
 const directionsMap = {
-  up: "FORWARD",
-  down: "REVERSE",
+  up: "forward",
+  down: "backward",
   left: "LEFT",
   right: "RIGHT",
-  'up-left': "FORWARD_LEFT",
-  'up-right': "FORWARD_RIGHT",
-  'down-left': "REVERSE_LEFT",
-  'down-right': "REVERSE_RIGHT"
+  'up-left': "forward_LEFT",
+  'up-right': "forward_RIGHT",
+  'down-left': "backward_LEFT",
+  'down-right': "backward_RIGHT"
 };
 
 const joystick = nipplejs.create({
@@ -126,7 +126,7 @@ function resetJoystickVisual() {
 document.getElementById("start").addEventListener("click", () => sendCommand("START"));
 document.getElementById("stop").addEventListener("click", () => sendCommand("STOP"));
 document.getElementById("accelerate").addEventListener("click", () => sendCommand("ACCELERATE"));
-document.getElementById("reverse").addEventListener("click", () => sendCommand("REVERSE"));
+document.getElementById("backward").addEventListener("click", () => sendCommand("backward"));
 
 
 
@@ -159,9 +159,9 @@ function initSpeechRecognition() {
       let command = null;
 
       if (speech.includes("avance") || speech.includes("en avant") || speech.includes("devant")) {
-        command = "FORWARD";
+        command = "forward";
       } else if (speech.includes("recule") || speech.includes("arrière") || speech.includes("en arrière")) {
-        command = "REVERSE";
+        command = "backward";
       } else if (speech.includes("gauche")) {
         command = "LEFT";
       } else if (speech.includes("droite")) {
