@@ -123,9 +123,10 @@ function resetJoystickVisual() {
 }
 
 // ------- BOUTONS CLASSIQUES -------
-document.getElementById("start").addEventListener("click", () => sendCommand("START"));
+document.getElementById("start").addEventListener("click", () => sendCommand("forward"));
 document.getElementById("stop").addEventListener("click", () => sendCommand("STOP"));
-document.getElementById("accelerate").addEventListener("click", () => sendCommand("ACCELERATE"));
+document.getElementById("auto-start").addEventListener("click", () => sendCommand("startauto"));
+document.getElementById("auto-stop").addEventListener("click", () => sendCommand("STOP"));
 document.getElementById("backward").addEventListener("click", () => sendCommand("backward"));
 
 
