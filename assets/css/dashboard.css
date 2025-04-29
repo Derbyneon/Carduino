@@ -144,7 +144,7 @@ nav a:hover {
   }
 
   .dashboard-panels {
-    flex-direction: column;
+    flex-direction: column-reverse;
     max-height: none;
     padding: 15px;
   }
